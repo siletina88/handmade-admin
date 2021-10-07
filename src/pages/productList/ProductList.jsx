@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './productList.scss'
 import { DataGrid } from '@material-ui/data-grid'
-import { DeleteOutline } from '@material-ui/icons'
+import { DeleteOutline, Edit } from '@material-ui/icons'
 import { productRows } from '../../dummyData'
 import { Link } from 'react-router-dom'
 
@@ -24,19 +24,19 @@ const ProductList = () => {
           </div>
         )
       },
-      width: 200,
+      width: 300,
       editable: true,
     },
     {
       field: 'stock',
       headerName: 'Na stanju',
-      width: 200,
+      width: 150,
       editable: true,
     },
     {
       field: 'status',
       headerName: 'Status',
-      type: 'number',
+
       width: 140,
       editable: true,
     },
@@ -50,17 +50,25 @@ const ProductList = () => {
     {
       field: 'action',
       headerName: 'Opcije',
-      width: 150,
+      width: 200,
       renderCell: (params) => {
         return (
           <>
-            <Link to={'/product/' + params.row.id}>
-              <button className="edit">Edit</button>
+            <Link
+              style={{ textDecoration: 'none' }}
+              to={'/product/' + params.row.id}
+            >
+              <button className="edit">
+                Edit <Edit className="icon"></Edit>
+              </button>
             </Link>
-            <DeleteOutline
+
+            <button
               onClick={() => handleDelete(params.row.id)}
               className="delete"
-            ></DeleteOutline>
+            >
+              Delete <DeleteOutline className="icon"></DeleteOutline>
+            </button>
           </>
         )
       },

@@ -1,3 +1,6 @@
+@import '../../styles/partials/breakpoints';
+@import '../../styles/partials/colors';
+
 .userList {
   flex: 5;
   padding: 20px;
@@ -14,17 +17,37 @@
     }
   }
   .edit {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
-    background-color: rgb(0, 165, 110);
+    background-color: $clr-button-secondary;
     cursor: pointer;
     margin-right: 20px;
     color: white;
+    .icon {
+      font-size: 18px !important;
+      color: $clr-menu-item-text;
+      margin-left: 2px;
+    }
   }
   .delete {
-    color: crimson;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: $clr-button-danger;
     cursor: pointer;
-    font-weight: bold !important;
+    margin-right: 20px;
+    color: white;
+    .icon {
+      font-size: 18px !important;
+      color: $clr-menu-item-text;
+      margin-left: 2px;
+    }
   }
 }

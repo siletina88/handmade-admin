@@ -1,3 +1,6 @@
+@import '../../styles/partials/breakpoints';
+@import '../../styles/partials/colors';
+
 .widgetSm {
   flex: 1;
 
@@ -43,8 +46,8 @@
         border: none;
         border-radius: 10px;
         padding: 7px 10px;
-        background-color: rgb(224, 243, 250);
-        color: gray;
+        background-color: $clr-menu-subaccent;
+        color: $clr-menu-background;
         cursor: pointer;
         .icon {
           margin-right: 5px;

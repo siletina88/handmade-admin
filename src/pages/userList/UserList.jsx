@@ -1,7 +1,7 @@
 import './userList.scss'
 import { useState } from 'react'
 import { DataGrid } from '@material-ui/data-grid'
-import { DeleteOutline } from '@material-ui/icons'
+import { DeleteOutline, Edit } from '@material-ui/icons'
 import { userRows } from '../../dummyData'
 import { Link } from 'react-router-dom'
 
@@ -51,17 +51,25 @@ const UserList = () => {
     {
       field: 'action',
       headerName: 'Opcije',
-      width: 150,
+      width: 200,
       renderCell: (params) => {
         return (
           <>
-            <Link to={'/user/' + params.row.id}>
-              <button className="edit">Edit</button>
+            <Link
+              style={{ textDecoration: 'none' }}
+              to={'/user/' + params.row.id}
+            >
+              <button className="edit">
+                Edit <Edit className="icon"></Edit>
+              </button>
             </Link>
-            <DeleteOutline
+
+            <button
               onClick={() => handleDelete(params.row.id)}
               className="delete"
-            ></DeleteOutline>
+            >
+              Delete <DeleteOutline className="icon"></DeleteOutline>
+            </button>
           </>
         )
       },

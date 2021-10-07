@@ -1,3 +1,6 @@
+@import '../../styles/partials/breakpoints';
+@import '../../styles/partials/colors';
+
 .widgetLg {
   flex: 2;
 
@@ -40,16 +43,16 @@
           border-radius: 10px;
         }
         .Approved {
-          background-color: rgb(143, 211, 143);
-          color: rgb(10, 126, 10);
+          background-color: $clr-button-secondary;
+          color: $clr-menu-item-text;
         }
         .Declined {
-          background-color: rgb(253, 143, 143);
-          color: rgb(122, 15, 20);
+          background-color: $clr-button-danger;
+          color: $clr-menu-item-text;
         }
         .Pending {
-          background-color: rgb(185, 185, 255);
-          color: rrgb(0, 0, 255);
+          background-color: $clr-button-primary;
+          color: $clr-menu-item-text;
         }
       }
     }
