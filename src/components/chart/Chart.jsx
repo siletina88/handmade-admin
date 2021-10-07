@@ -1,12 +1,12 @@
 import React from 'react'
 import './chart.scss'
 import {
-  LineChart,
-  Line,
+  AreaChart,
   XAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Area,
 } from 'recharts'
 
 const Chart = ({ title, data, dataKey, grid }) => {
@@ -14,9 +14,9 @@ const Chart = ({ title, data, dataKey, grid }) => {
     <div className="chart">
       <h3 className="title">{title}</h3>
       <ResponsiveContainer width="100%" aspect={7 / 1}>
-        <LineChart data={data}>
+        <AreaChart data={data}>
           <XAxis dataKey="name" stroke="#5550bd"></XAxis>
-          <Line type="monotone" dataKey={dataKey} stroke="#5550bd"></Line>
+          <Area type="monotone" dataKey={dataKey} stroke="#5550bd"></Area>
           <Tooltip></Tooltip>
           {grid && (
             <CartesianGrid
@@ -24,7 +24,7 @@ const Chart = ({ title, data, dataKey, grid }) => {
               strokeDasharray="5 5"
             ></CartesianGrid>
           )}
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   )
