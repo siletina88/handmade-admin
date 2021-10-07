@@ -13,6 +13,8 @@ import {
   RateReview,
 } from '@material-ui/icons/'
 
+import { NavLink } from 'react-router-dom'
+
 const Sidebar = () => {
   return (
     <div className="sidebar">
@@ -20,28 +22,41 @@ const Sidebar = () => {
         <div className="menu">
           <div className="title">Dashboard</div>
           <ul className="list">
-            <li className="listItem active">
-              <Apps className="icon"></Apps> Pocetna
+            <NavLink exact to="/" className="link" activeClassName="active">
+              <li className="listItem">
+                <Apps className="icon"></Apps>
+                <span className="itemTitle">Pocetna</span>
+              </li>
+            </NavLink>
+
+            <li className="listItem">
+              <Equalizer className="icon"></Equalizer>
+              <span className="itemTitle">Statistika</span>
             </li>
             <li className="listItem">
-              <Equalizer className="icon"></Equalizer> Statistika
-            </li>
-            <li className="listItem">
-              <TrendingUp className="icon"></TrendingUp> Prodaja
+              <TrendingUp className="icon"></TrendingUp>{' '}
+              <span className="itemTitle">Prodaja</span>
             </li>
           </ul>
         </div>
         <div className="menu">
           <div className="title">Brzi Meni</div>
           <ul className="list">
-            <li className="listItem ">
-              <PeopleAlt className="icon"></PeopleAlt> Korisnici
-            </li>
+            <NavLink to="/users/" className="link">
+              <li className="listItem">
+                <PeopleAlt className="icon"></PeopleAlt>{' '}
+                <span className="itemTitle">Korisnici</span>
+              </li>
+            </NavLink>
+            <NavLink to="/products/" className="link">
+              <li className="listItem">
+                <Panorama className="icon"></Panorama>
+                <span className="itemTitle">Artikli</span>
+              </li>
+            </NavLink>
             <li className="listItem">
-              <Panorama className="icon"></Panorama> Proizvodi
-            </li>
-            <li className="listItem">
-              <AttachMoney className="icon"></AttachMoney> Transakcije
+              <AttachMoney className="icon"></AttachMoney>{' '}
+              <span className="itemTitle">Transakcije</span>
             </li>
           </ul>
         </div>
@@ -49,13 +64,16 @@ const Sidebar = () => {
           <div className="title">Notifikacije</div>
           <ul className="list">
             <li className="listItem ">
-              <MailOutline className="icon"></MailOutline> Email
+              <MailOutline className="icon"></MailOutline>{' '}
+              <span className="itemTitle">Email</span>
             </li>
             <li className="listItem">
-              <Message className="icon"></Message> Feedback
+              <Message className="icon"></Message>{' '}
+              <span className="itemTitle">Feedback</span>
             </li>
             <li className="listItem">
-              <RateReview className="icon"></RateReview> Poruke
+              <RateReview className="icon"></RateReview>{' '}
+              <span className="itemTitle">Poruke</span>
             </li>
           </ul>
         </div>

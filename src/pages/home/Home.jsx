@@ -14,7 +14,7 @@ const Home = () => {
         data={userData}
         title="Statistika korisnika"
         grid
-        dataKey="Active User"
+        dataKey="Aktivni korisnici"
       ></Chart>
       <div className="widgets">
         <WidgetSm></WidgetSm>

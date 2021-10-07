@@ -1,7 +1,10 @@
 .home {
-  flex: 4;
+  flex: 5;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   .widgets {
     display: flex;
-    margin: 20px;
   }
 }

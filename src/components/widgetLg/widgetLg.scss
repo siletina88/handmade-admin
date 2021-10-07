@@ -3,4 +3,55 @@
 
   box-shadow: 0px 0px 12px 3px rgba(124, 124, 124, 0.15);
   padding: 20px;
+  .title {
+    font-size: 22px;
+  }
+  .img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  .table {
+    width: 100%;
+    border-spacing: 20px;
+    .tr {
+      .th {
+        text-align: left;
+        font-weight: 800;
+      }
+      .user {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        padding: 0px;
+      }
+      .date {
+        font-weight: 300;
+      }
+      .amount {
+        font-weight: 300;
+      }
+      .status {
+        .button {
+          padding: 5px 7px;
+          border: none;
+          border-radius: 10px;
+        }
+        .Approved {
+          background-color: rgb(143, 211, 143);
+          color: rgb(10, 126, 10);
+        }
+        .Declined {
+          background-color: rgb(253, 143, 143);
+          color: rgb(122, 15, 20);
+        }
+        .Pending {
+          background-color: rgb(185, 185, 255);
+          color: rrgb(0, 0, 255);
+        }
+      }
+    }
+  }
 }

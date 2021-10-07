@@ -1,9 +1,15 @@
+@import '../../styles/partials/breakpoints';
+
 .sidebar {
   flex: 1;
   height: calc(100vh - 50px);
   background-color: rgb(236, 229, 229);
   position: sticky;
+
   top: 50px;
+  .active {
+    background-color: rgb(241, 161, 161);
+  }
   .wrapper {
     padding: 20px;
     color: #555;
@@ -15,7 +21,12 @@
       }
       .list {
         list-style-type: none;
-        padding: 5px;
+        padding: 10px;
+
+        .link {
+          text-decoration: none;
+        }
+
         .listItem {
           padding: 5px;
           cursor: pointer;
@@ -23,6 +34,21 @@
           align-items: center;
           border-radius: 10px;
           font-size: 14px;
+          color: rgb(88, 88, 88);
+          background-color: inherit;
+          width: 150px;
+          margin-bottom: 5px;
+          transition: all 0.5s ease;
+
+          @include breakpoint(laptop) {
+            width: 30px;
+          }
+
+          .itemTitle {
+            @include breakpoint(laptop) {
+              display: none;
+            }
+          }
 
           &:hover {
             background-color: rgb(241, 161, 161);
@@ -30,10 +56,10 @@
           .icon {
             margin-right: 5px;
             font-size: 20px !important;
+            @include breakpoint(laptop) {
+              font-size: 30px !important;
+            }
           }
-        }
-        .active {
-          background-color: rgb(238, 190, 190);
         }
       }
     }

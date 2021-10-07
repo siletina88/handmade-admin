@@ -8,17 +8,19 @@
     font-size: 22px;
     font-weight: bold;
   }
-  .img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+
   .list {
     margin: 0;
     padding: 0;
     list-style: none;
     .listItem {
+      .img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+      }
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -26,6 +28,7 @@
       .user {
         display: flex;
         flex-direction: column;
+        padding: 0px;
         .username {
           font-weight: bold;
         }
