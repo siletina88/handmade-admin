@@ -1,3 +1,6 @@
+@import '../../styles/partials/breakpoints';
+@import '../../styles/partials/colors';
+
 .user {
   flex: 5;
   padding: 20px;
@@ -9,7 +12,7 @@
       width: 80px;
       border: none;
       padding: 5px;
-      background-color: teal;
+      background-color: $clr-button-primary;
       border-radius: 5px;
       color: white;
       font-size: 16px;
@@ -111,7 +114,7 @@
             border: none;
             padding: 5px;
             cursor: pointer;
-            background-color: teal;
+            background-color: $clr-button-primary;
             color: white;
             font-weight: bold;
           }

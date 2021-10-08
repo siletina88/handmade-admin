@@ -69,7 +69,7 @@ const Sidebar = () => {
             </li>
             <li className="listItem">
               <Message className="icon"></Message>{' '}
-              <span className="itemTitle">Feedback</span>
+              <span className="itemTitle">Recenzije</span>
             </li>
             <li className="listItem">
               <RateReview className="icon"></RateReview>{' '}

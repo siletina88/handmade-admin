@@ -9,7 +9,7 @@ const Product = () => {
   return (
     <div className="product">
       <div className="titleContainer">
-        <h1 className="title">Proizvodi</h1>
+        <h1 className="title">Artikli</h1>
         <Link to="/newProduct">
           <button className="addButton">Dodaj</button>
         </Link>

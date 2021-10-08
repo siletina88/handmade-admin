@@ -24,7 +24,7 @@ const ProductList = () => {
           </div>
         )
       },
-      width: 300,
+      width: 250,
       editable: true,
     },
     {
