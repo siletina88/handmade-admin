@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "./App.scss";
 
 import Sidebar from "./components/sidebar/Sidebar";
@@ -12,44 +13,52 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
-import { useState, useEffect } from "react";
+
+import { useSelector } from "react-redux";
 
 function App() {
+  const admin = useSelector((state) => state.user.currentUser?.isAdmin);
+  console.log(admin);
+
   return (
     <Router>
       <Switch>
         <Route path='/login'>
           <Login />
         </Route>
-        <>
-          <Topbar></Topbar>
+        {admin ? (
+          <>
+            <Topbar></Topbar>
 
-          <div className='container'>
-            <Sidebar></Sidebar>
+            <div className='container'>
+              <Sidebar></Sidebar>
 
-            <Route exact path='/'>
-              <Home></Home>
-            </Route>
-            <Route path='/users'>
-              <UserList></UserList>
-            </Route>
-            <Route path='/user/:userId'>
-              <User></User>
-            </Route>
-            <Route path='/newUser'>
-              <NewUser></NewUser>
-            </Route>
-            <Route path='/products/'>
-              <ProductList></ProductList>
-            </Route>
-            <Route path='/product/:productsId'>
-              <Product></Product>
-            </Route>
-            <Route path='/newProduct'>
-              <NewProduct></NewProduct>
-            </Route>
-          </div>
-        </>
+              <Route exact path='/'>
+                <Home></Home>
+              </Route>
+              <Route path='/users'>
+                <UserList></UserList>
+              </Route>
+              <Route path='/user/:userId'>
+                <User></User>
+              </Route>
+              <Route path='/newUser'>
+                <NewUser></NewUser>
+              </Route>
+              <Route path='/products/'>
+                <ProductList></ProductList>
+              </Route>
+              <Route path='/product/:productsId'>
+                <Product></Product>
+              </Route>
+              <Route path='/newProduct'>
+                <NewProduct></NewProduct>
+              </Route>
+            </div>
+          </>
+        ) : (
+          <Redirect to='/login'></Redirect>
+        )}
       </Switch>
     </Router>
   );

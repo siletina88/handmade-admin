@@ -1,5 +1,5 @@
-@import '../../styles/partials/breakpoints';
-@import '../../styles/partials/colors';
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/colors";
 
 .widgetLg {
   flex: 2;
@@ -29,6 +29,9 @@
         align-items: center;
         font-weight: 600;
         padding: 0px;
+        .name {
+          margin-left: 10px;
+        }
       }
       .date {
         font-weight: 300;
@@ -42,15 +45,15 @@
           border: none;
           border-radius: 10px;
         }
-        .Approved {
+        .approved {
           background-color: $clr-button-secondary;
           color: $clr-menu-item-text;
         }
-        .Declined {
+        .declined {
           background-color: $clr-button-danger;
           color: $clr-menu-item-text;
         }
-        .Pending {
+        .pending {
           background-color: $clr-button-primary;
           color: $clr-menu-item-text;
         }
