@@ -1,0 +1,29 @@
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/colors";
+
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(https://image.freepik.com/free-vector/cool-wavy-abstract-gradient_53876-93826.jpg);
+  background-size: cover;
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    .input {
+      padding: 10px;
+      margin-bottom: 5px;
+      border: none;
+    }
+    .button {
+      border: none;
+      padding: 10px;
+      background-color: $clr-button-primary;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
