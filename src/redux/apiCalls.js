@@ -14,7 +14,8 @@ import {
   updateProductStart,
   updateProductSuccess,
 } from "./productSlice";
-import { getUsersStart, getUsersFailure, getUsersSuccess } from "./userSlice";
+import { getUsersStart, getUsersFailure, getUsersSuccess, updateUserFailure, updateUserStart, updateUserSuccess } from "./userSlice";
+import { getOrderFailure, getOrderStart, getOrderSuccess } from "./orderSlice";
 
 //login
 
@@ -85,5 +86,28 @@ export const getUsers = async (dispatch) => {
     dispatch(getUsersSuccess(res.data));
   } catch (error) {
     dispatch(getUsersFailure());
+  }
+};
+
+// update user
+export const updateUser = async (id, user, dispatch) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await userRequest.put(`/users/${id}`, user);
+    dispatch(updateUserSuccess({ id, user }));
+  } catch (error) {
+    dispatch(updateUserFailure());
+  }
+};
+
+//get all orders
+
+export const getOrders = async (dispatch) => {
+  dispatch(getOrderStart());
+  try {
+    const res = await userRequest.get("/orders");
+    dispatch(getOrderSuccess(res.data));
+  } catch (error) {
+    dispatch(getOrderFailure());
   }
 };

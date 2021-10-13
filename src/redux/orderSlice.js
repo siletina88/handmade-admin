@@ -1,23 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userSlice = createSlice({
-  name: "user",
+const orderSlice = createSlice({
+  name: "order",
   initialState: {
-    users: [],
+    orders: [],
     isFetching: false,
     error: false,
   },
   reducers: {
-    //get all users
-    getUsersStart: (state) => {
+    //get all products
+    getOrderStart: (state) => {
       state.isFetching = true;
       state.error = false;
     },
-    getUsersSuccess: (state, action) => {
+    getOrderSuccess: (state, action) => {
       state.isFetching = false;
-      state.users = action.payload;
+      state.orders = action.payload;
     },
-    getUsersFailure: (state) => {
+    getOrderFailure: (state) => {
       state.isFetching = false;
       state.error = true;
     },
@@ -39,19 +39,19 @@ const userSlice = createSlice({
     //   state.error = true;
     // },
 
-    //update a product
-    updateUserStart: (state) => {
-      state.isFetching = true;
-      state.error = false;
-    },
-    updateUserSuccess: (state, action) => {
-      state.isFetching = false;
-      state.products[state.users.findIndex((item) => item._id === action.payload.id)] = action.payload.user;
-    },
-    updateUserFailure: (state) => {
-      state.isFetching = false;
-      state.error = true;
-    },
+    // //update a product
+    // updateProductStart: (state) => {
+    //   state.isFetching = true;
+    //   state.error = false;
+    // },
+    // updateProductSuccess: (state, action) => {
+    //   state.isFetching = false;
+    //   state.products[state.products.findIndex((item) => item._id === action.payload.id)] = action.payload.product;
+    // },
+    // updateProductFailure: (state) => {
+    //   state.isFetching = false;
+    //   state.error = true;
+    // },
 
     // //update a product
     // addProductStart: (state) => {
@@ -70,17 +70,17 @@ const userSlice = createSlice({
 });
 
 export const {
-  getUsersFailure,
-  getUsersStart,
-  getUsersSuccess,
+  getOrderFailure,
+  getOrderStart,
+  getOrderSuccess,
   // deleteProductFailure,
   // deleteProductStart,
   // deleteProductSuccess,
-  updateUserFailure,
-  updateUserStart,
-  updateUserSuccess,
+  // updateProductFailure,
+  // updateProductStart,
+  // updateProductSuccess,
   // addProductFailure,
   // addProductStart,
   // addProductSuccess,
-} = userSlice.actions;
-export default userSlice.reducer;
+} = orderSlice.actions;
+export default orderSlice.reducer;

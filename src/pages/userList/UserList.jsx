@@ -44,12 +44,24 @@ const UserList = () => {
       editable: true,
     },
     {
-      field: "status",
-      headerName: "Status",
-      type: "number",
+      field: "fullName",
+      headerName: "Puno ime",
       width: 140,
       editable: true,
     },
+    {
+      field: "phone",
+      headerName: "Broj telefona",
+      width: 140,
+      editable: true,
+    },
+    {
+      field: "address",
+      headerName: "Adresa",
+      width: 140,
+      editable: true,
+    },
+
     {
       field: "transaction",
       headerName: "Transakcije",
@@ -81,7 +93,10 @@ const UserList = () => {
 
   return (
     <div className='userList'>
-      <DataGrid rows={users} getRowId={(row) => row._id} columns={columns} pageSize={10} checkboxSelection disableSelectionOnClick />
+      <Link to='/newUser'>
+        <button className='addButton'>Dodaj</button>
+      </Link>
+      <DataGrid style={{ height: "85vh" }} rows={users} getRowId={(row) => row._id} columns={columns} pageSize={10} checkboxSelection disableSelectionOnClick />
     </div>
   );
 };

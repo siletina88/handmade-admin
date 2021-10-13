@@ -49,7 +49,7 @@ const NewProduct = () => {
 
         <div className='item'>
           <label>Na Stanju</label>
-          <select name='inStock' id='stock' onChange={handleChange}>
+          <select className='item' name='inStock' id='stock' onChange={handleChange}>
             <option value='true'>Da</option>
             <option value='false'>Ne</option>
           </select>

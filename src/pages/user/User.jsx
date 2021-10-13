@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import "./user.scss";
 import { PermIdentity, Email, Phone, LocationOn, Event, CloudUpload } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { UpdateUserWithFirebase } from "../../customActions/UpdateUserWithFirebase";
+import { format } from "timeago.js";
 
 const User = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const user = useSelector((state) => state.user.users.find((user) => user._id === id));
+  const dispatch = useDispatch();
 
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
@@ -17,6 +20,12 @@ const User = () => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    UpdateUserWithFirebase(dispatch, file, id, inputs);
   };
 
   console.log(inputs);
@@ -45,12 +54,12 @@ const User = () => {
             </div>
             <div className='userShowInfo'>
               <Event className='showIcon'></Event>
-              <span className='showInfoTitle'>19.12.1988 - TODO USER PROFILE PAGE</span>
+              <span className='showInfoTitle'>Registrovan : {format(user.createdAt)}</span>
             </div>
             <span className='showBottomTitle'>Kontakt korisnika</span>
             <div className='userShowInfo'>
               <Phone className='showIcon'></Phone>
-              <span className='showInfoTitle'>+387 665 123 343 - TODO USER PROFILE PAGE</span>
+              <span className='showInfoTitle'>{user.phone ? user.phone : "BROJ"}</span>
             </div>
             <div className='userShowInfo'>
               <Email className='showIcon'></Email>
@@ -58,7 +67,7 @@ const User = () => {
             </div>
             <div className='userShowInfo'>
               <LocationOn className='showIcon'></LocationOn>
-              <span className='showInfoTitle'>DOBOJ - BiH - TODO USER PROFILE PAGE</span>
+              <span className='showInfoTitle'>{user.address ? user.address : "ADRESA "}</span>
             </div>
           </div>
         </div>
@@ -72,7 +81,7 @@ const User = () => {
               </div>
               <div className='updateItem'>
                 <label>Puno ime</label>
-                <input onChange={handleChange} type='text' name='fullName' placeholder='Puno ime i prezime' className='updateInput' />
+                <input onChange={handleChange} type='text' name='fullName' placeholder={user?.fullName} className='updateInput' />
               </div>
               <div className='updateItem'>
                 <label>Email</label>
@@ -80,11 +89,11 @@ const User = () => {
               </div>
               <div className='updateItem'>
                 <label>Adresa</label>
-                <input onChange={handleChange} type='text' name='address' placeholder='Adresa' className='updateInput' />
+                <input onChange={handleChange} type='text' name='address' placeholder={user?.address} className='updateInput' />
               </div>
               <div className='updateItem'>
                 <label>Telefon</label>
-                <input onChange={handleChange} type='text' name='phone' placeholder='Broj telefona' className='updateInput' />
+                <input onChange={handleChange} type='text' name='phone' placeholder={user?.phone} className='updateInput' />
               </div>
             </div>
             <div className='userUpdateRight'>
@@ -95,7 +104,9 @@ const User = () => {
                 </label>
                 <input onChange={(e) => setFile(e.target.files[0])} type='file' id='file' style={{ display: "none" }} />
               </div>
-              <button className='updateButton'>Azuriraj</button>
+              <button onClick={handleClick} className='updateButton'>
+                Azuriraj
+              </button>
             </div>
           </form>
         </div>

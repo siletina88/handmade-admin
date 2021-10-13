@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
+import OrderList from "./pages/orderList/OrderList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
@@ -53,6 +54,9 @@ function App() {
               </Route>
               <Route path='/newProduct'>
                 <NewProduct></NewProduct>
+              </Route>
+              <Route path='/orders/'>
+                <OrderList></OrderList>
               </Route>
             </div>
           </>

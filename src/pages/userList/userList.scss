@@ -1,9 +1,21 @@
-@import '../../styles/partials/breakpoints';
-@import '../../styles/partials/colors';
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/colors";
 
 .userList {
   flex: 5;
   padding: 20px;
+
+  .addButton {
+    width: 80px;
+    border: none;
+    padding: 5px;
+    background-color: $clr-button-primary;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
 
   .user {
     display: flex;
