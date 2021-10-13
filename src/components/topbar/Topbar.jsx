@@ -1,21 +1,20 @@
 // @ts-nocheck
 import React from "react";
 import "./topbar.scss";
+import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
+import SettingsIcon from "@material-ui/icons/Settings";
+import LanguageIcon from "@material-ui/icons/Language";
 import Badge from "@material-ui/core/Badge";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/apiCalls";
 import { useState, useEffect } from "react";
 
-import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
-import SettingsIcon from "@material-ui/icons/Settings";
-import LanguageIcon from "@material-ui/icons/Language";
-
 const Topbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.currentUser);
 
-  const [username, setUsername] = useState("sas");
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     setUsername(user?.username);

@@ -8,7 +8,7 @@ import { Publish } from "@material-ui/icons/";
 import { useSelector, useDispatch } from "react-redux";
 import { userRequest } from "../../requestMethods";
 
-import { UpdateWithFirebase } from "../../customActions/UpdateWithFirebase";
+import { UpdateProductWithFirebase } from "../../customActions/UpdateProductWithFirebase";
 import MONTHS from "../../constants/months";
 
 const Product = () => {
@@ -31,7 +31,7 @@ const Product = () => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    UpdateWithFirebase(dispatch, file, id, inputs);
+    UpdateProductWithFirebase(dispatch, file, id, inputs);
   };
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const Product = () => {
       } catch (error) {}
     };
     getStats();
-  }, []);
+  }, [id]);
   const product = useSelector((state) => state.product.products.find((product) => product._id === id));
 
   // @ts-ignore

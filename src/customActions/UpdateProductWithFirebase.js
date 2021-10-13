@@ -3,7 +3,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import app from "../firebase";
 import { updateProduct } from "../redux/apiCalls";
 
-export const UpdateWithFirebase = (dispatch, file, id, inputs) => {
+export const UpdateProductWithFirebase = (dispatch, file, id, inputs) => {
   const checkFileName = () => {
     if (file) {
       const fileName = new Date().getTime() + file.name;

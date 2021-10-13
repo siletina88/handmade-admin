@@ -14,6 +14,7 @@ import {
   updateProductStart,
   updateProductSuccess,
 } from "./productSlice";
+import { getUsersStart, getUsersFailure, getUsersSuccess } from "./userSlice";
 
 //login
 
@@ -74,5 +75,15 @@ export const addProduct = async (product, dispatch) => {
     dispatch(addProductSuccess(res.data));
   } catch (error) {
     dispatch(addProductFailure());
+  }
+};
+// get all users
+export const getUsers = async (dispatch) => {
+  dispatch(getUsersStart());
+  try {
+    const res = await userRequest.get("/users");
+    dispatch(getUsersSuccess(res.data));
+  } catch (error) {
+    dispatch(getUsersFailure());
   }
 };
