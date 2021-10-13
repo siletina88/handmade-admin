@@ -1,90 +1,124 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './product.scss'
-import Chart from '../../components/chart/Chart'
-import { productData } from '../../dummyData'
-import { Publish } from '@material-ui/icons/'
+import React, { useState, useEffect } from "react";
+
+import { Link, useLocation } from "react-router-dom";
+import "./product.scss";
+import Chart from "../../components/chart/Chart";
+
+import { Publish } from "@material-ui/icons/";
+import { useSelector, useDispatch } from "react-redux";
+import { userRequest } from "../../requestMethods";
+
+import { UpdateWithFirebase } from "../../customActions/UpdateWithFirebase";
+import MONTHS from "../../constants/months";
 
 const Product = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  const [productStats, setProductStats] = useState([]);
+
+  const id = location.pathname.split("/")[2];
+
+  const [inputs, setInputs] = useState({});
+  const [file, setFile] = useState(null);
+
+  const handleChange = (e) => {
+    setInputs((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    UpdateWithFirebase(dispatch, file, id, inputs);
+  };
+
+  useEffect(() => {
+    const getStats = async () => {
+      try {
+        const res = await userRequest.get("orders/income?pid=" + id);
+        // @ts-ignore
+        const list = res.data.sort((a, b) => {
+          return a._id - b._id;
+        });
+        list.map((item) => setProductStats((prev) => [...prev, { name: MONTHS[item._id - 1], Sales: item.total }]));
+      } catch (error) {}
+    };
+    getStats();
+  }, []);
+  const product = useSelector((state) => state.product.products.find((product) => product._id === id));
+
+  // @ts-ignore
+
   return (
-    <div className="product">
-      <div className="titleContainer">
-        <h1 className="title">Artikli</h1>
-        <Link to="/newProduct">
-          <button className="addButton">Dodaj</button>
+    <div className='product'>
+      <div className='titleContainer'>
+        <h1 className='title'>Artikli</h1>
+        <Link to='/newProduct'>
+          <button className='addButton'>Dodaj</button>
         </Link>
       </div>
-      <div className="top">
-        <div className="topLeft">
-          <Chart
-            data={productData}
-            dataKey="Prodaja"
-            title="Statistika prodaje"
-          ></Chart>
+      <div className='top'>
+        <div className='topLeft'>
+          <Chart data={productStats} dataKey='Sales' title='Statistika prodaje'></Chart>
         </div>
-        <div className="topRight">
-          <div className="infoTop">
-            <img
-              src="https://asset.swarovski.com/images/$size_1450/t_swa103/b_rgb:ffffff,c_scale,dpr_3.0,f_auto,w_500/5464948_png/tennis-deluxe-bracelet--round--white--rose-gold-tone-plated-swarovski-5464948.png"
-              alt=""
-              className="infoImg"
-            />
-            <span className="infoName">Swarovski ogrlica</span>
+        <div className='topRight'>
+          <div className='infoTop'>
+            <img src={product.img} alt='' className='infoImg' />
+            <span className='infoName'>{product.title}</span>
           </div>
-          <div className="infoBottom">
-            <div className="infoItem">
-              <span className="infoKey">id:</span>
-              <span className="infoValue">123</span>
+          <div className='infoBottom'>
+            <div className='infoItem'>
+              <span className='infoKey'>id:</span>
+              <span className='infoValue'>{product._id}</span>
             </div>
-            <div className="infoItem">
-              <span className="infoKey">prodaja:</span>
-              <span className="infoValue">1223</span>
+            <div className='infoItem'>
+              <span className='infoKey'>prodaja:</span>
+              <span className='infoValue'>1223</span>
             </div>
-            <div className="infoItem">
-              <span className="infoKey">aktivan:</span>
-              <span className="infoValue">yes</span>
-            </div>
-            <div className="infoItem">
-              <span className="infoKey">na stanju:</span>
-              <span className="infoValue">no</span>
+
+            <div className='infoItem'>
+              <span className='infoKey'>na stanju:</span>
+              <span className='infoValue'>{product.inStock ? "Da" : "Ne"}</span>
             </div>
           </div>
         </div>
       </div>
-      <div className="bottom">
-        <form className="form">
-          <div className="formLeft">
+      <div className='bottom'>
+        <form className='form'>
+          <div className='formLeft'>
             <label>Ime proizvoda</label>
-            <input type="text" placeholder="Swarowski" />
+            <input onChange={handleChange} name='title' type='text' placeholder={product.title} />
+            <label>Opis</label>
+            <input onChange={handleChange} name='description' type='text' placeholder={product.description} />
+            <label>Cijena</label>
+            <input onChange={handleChange} name='price' type='number' placeholder={product.price} />
             <label>Na stanju</label>
-            <select name="inStock" id="inStock">
-              <option value="yes">Da</option>
-              <option value="no">Ne</option>
-            </select>
-            <label>Aktivan</label>
-            <select name="active" id="active">
-              <option value="yes">Da</option>
-              <option value="no">Ne</option>
+            <select onChange={handleChange} name='inStock' id='inStock'>
+              <option value='true'>Da</option>
+              <option value='false'>Ne</option>
             </select>
           </div>
-          <div className="formRight">
-            <div className="upload">
-              <img
-                src="https://asset.swarovski.com/images/$size_1450/t_swa103/b_rgb:ffffff,c_scale,dpr_1.0,f_auto,w_500/5512577_png/swarovski-iconic-swan-earrings--swan--blue--rhodium-plated-swarovski-5512577.png"
-                alt=""
-                className="uploadImg"
-              />
-              <label for="file">
+          <div className='formRight'>
+            <div className='upload'>
+              <img src={product.img} alt='' className='uploadImg' />
+              <label
+                // @ts-ignore
+                for='file'
+              >
                 <Publish></Publish>
               </label>
-              <input type="file" id="file" style={{ display: 'none' }} />
+              <input onChange={(e) => setFile(e.target.files[0])} type='file' id='file' style={{ display: "none" }} />
             </div>
-            <button className="updateButton">Azuriraj</button>
+            <button onClick={handleClick} className='updateButton'>
+              Azuriraj
+            </button>
           </div>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;

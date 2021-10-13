@@ -13,7 +13,7 @@ import LanguageIcon from "@material-ui/icons/Language";
 
 const Topbar = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.auth.currentUser);
 
   const [username, setUsername] = useState("sas");
 
