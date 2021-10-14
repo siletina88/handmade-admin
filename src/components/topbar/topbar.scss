@@ -1,5 +1,5 @@
-@import '../../styles/partials/breakpoints';
-@import '../../styles/partials/colors';
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/colors";
 
 .topbar {
   width: 100%;
@@ -19,9 +19,20 @@
 
     .left {
       .logo {
+        position: relative;
         font-weight: bold;
         font-size: 30px;
+
         color: $clr-menu-accent;
+        z-index: 999;
+        .logoImg {
+          width: 250px;
+          position: absolute;
+          top: -30px;
+          left: -10px;
+
+          z-index: 20;
+        }
       }
     }
     .right {
@@ -31,6 +42,16 @@
       .icons {
         display: flex;
         align-items: center;
+        gap: 20px;
+
+        .leftMenu {
+          display: flex;
+        }
+        .rightMenu {
+          display: flex;
+
+          margin-right: 10px;
+        }
 
         .icon {
           display: flex;
@@ -38,9 +59,14 @@
           cursor: pointer;
           color: $clr-menu-item-text;
           margin-left: 10px;
+
           &:hover {
             color: $clr-menu-accent;
           }
+        }
+
+        .last {
+          padding-left: 10px;
         }
         .avatar {
           width: 25px;

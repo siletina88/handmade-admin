@@ -41,13 +41,15 @@ export const AddProductWithFirebase = (dispatch, file, categories, inputs) => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log(downloadURL);
           const product = { ...inputs, img: downloadURL, categories };
-          addProduct(product, dispatch);
+          const redirect = (window.location = "/products/");
+          addProduct(product, dispatch).then(redirect);
         });
       }
     );
   } else {
     const image = "https://cdn.imgbin.com/23/21/2/imgbin-product-return-privacy-policy-computer-icons-warehouse-chemist-ADktwPrHSyRDFWxGLCtphbHVH.jpg";
     const product = { ...inputs, img: image, categories };
-    addProduct(product, dispatch);
+    const redirect = (window.location = "/products/");
+    addProduct(product, dispatch).then(redirect);
   }
 };

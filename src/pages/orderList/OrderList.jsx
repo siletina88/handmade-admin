@@ -5,24 +5,25 @@ import { DeleteOutline, Edit } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct, getOrders } from "../../redux/apiCalls";
+import { deleteOrder, deleteProduct, getOrders } from "../../redux/apiCalls";
 import { format } from "timeago.js";
 
 const ProductList = () => {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.order.orders);
   const products = useSelector((state) => state.product.products);
+  const users = useSelector((state) => state.user.users);
 
   useEffect(() => {
     getOrders(dispatch);
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    deleteProduct(id, dispatch);
+    deleteOrder(id, dispatch);
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 200 },
+    { field: "_id", headerName: "ID", width: 250 },
     {
       field: "products",
       headerName: "Artikli",
@@ -38,25 +39,62 @@ const ProductList = () => {
         return <div>{title.join(", ")}</div>;
       },
 
-      width: 500,
+      width: 200,
+      editable: true,
+    },
+
+    {
+      field: "product",
+      headerName: "Korisnik",
+      renderCell: (params) => {
+        let title = "";
+
+        users.map((user) => {
+          if (user._id === params.row.userId) {
+            title = user.username;
+          }
+        });
+        return <div>{title}</div>;
+      },
+
+      width: 200,
       editable: true,
     },
 
     {
       field: "amount",
       headerName: "Iznos",
-      description: "This column has a value getter and is not sortable.",
 
-      width: 150,
+      width: 100,
     },
     {
       field: "createdAt",
       headerName: "Datum narudzbe",
-      description: "This column has a value getter and is not sortable.",
+
       renderCell: (params) => {
         return (
           <>
             <div className='rowitem'>{format(params.row.createdAt)}</div>
+          </>
+        );
+      },
+
+      width: 200,
+    },
+    {
+      field: "address",
+      headerName: "Adresa",
+
+      width: 200,
+    },
+    {
+      field: "status",
+      headerName: "Status",
+
+      renderCell: (params) => {
+        return (
+          <>
+            <div className='rowitem'>{params.row.status}</div>
           </>
         );
       },
@@ -87,9 +125,6 @@ const ProductList = () => {
 
   return (
     <div className='productList'>
-      <Link to='/newProduct'>
-        <button className='addButton'>Dodaj</button>
-      </Link>
       <DataGrid style={{ height: "85vh" }} rows={orders} getRowId={(row) => row._id} columns={columns} pageSize={15} checkboxSelection disableSelectionOnClick />
     </div>
   );

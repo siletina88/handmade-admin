@@ -26,8 +26,6 @@ const Home = () => {
     getStats();
   }, []);
 
-  console.log(userStats);
-
   return (
     <div className='home'>
       <FeatureInfo></FeatureInfo>

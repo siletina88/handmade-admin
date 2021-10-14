@@ -11,6 +11,7 @@ import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
 import OrderList from "./pages/orderList/OrderList";
+import Order from "./pages/order/Order";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
@@ -57,6 +58,9 @@ function App() {
               </Route>
               <Route path='/orders/'>
                 <OrderList></OrderList>
+              </Route>
+              <Route path='/order/:_id'>
+                <Order></Order>
               </Route>
             </div>
           </>

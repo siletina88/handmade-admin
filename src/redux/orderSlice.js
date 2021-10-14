@@ -8,7 +8,7 @@ const orderSlice = createSlice({
     error: false,
   },
   reducers: {
-    //get all products
+    //get all orders
     getOrderStart: (state) => {
       state.isFetching = true;
       state.error = false;
@@ -22,36 +22,36 @@ const orderSlice = createSlice({
       state.error = true;
     },
 
-    // //delete a product
-    // deleteProductStart: (state) => {
-    //   state.isFetching = true;
-    //   state.error = false;
-    // },
-    // deleteProductSuccess: (state, action) => {
-    //   state.isFetching = false;
-    //   state.products.splice(
-    //     state.products.findIndex((item) => item._id === action.payload),
-    //     1
-    //   );
-    // },
-    // deleteProductFailure: (state) => {
-    //   state.isFetching = false;
-    //   state.error = true;
-    // },
+    //delete a order
+    deleteOrderStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    deleteOrderSuccess: (state, action) => {
+      state.isFetching = false;
+      state.orders.splice(
+        state.orders.findIndex((item) => item._id === action.payload),
+        1
+      );
+    },
+    deleteOrderFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
 
-    // //update a product
-    // updateProductStart: (state) => {
-    //   state.isFetching = true;
-    //   state.error = false;
-    // },
-    // updateProductSuccess: (state, action) => {
-    //   state.isFetching = false;
-    //   state.products[state.products.findIndex((item) => item._id === action.payload.id)] = action.payload.product;
-    // },
-    // updateProductFailure: (state) => {
-    //   state.isFetching = false;
-    //   state.error = true;
-    // },
+    //update order by id
+    updateOrderStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    updateOrderSuccess: (state, action) => {
+      state.isFetching = false;
+      state.orders[state.orders.findIndex((item) => item._id === action.payload.id)] = action.payload.order;
+    },
+    updateOrderFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
 
     // //update a product
     // addProductStart: (state) => {
@@ -69,18 +69,6 @@ const orderSlice = createSlice({
   },
 });
 
-export const {
-  getOrderFailure,
-  getOrderStart,
-  getOrderSuccess,
-  // deleteProductFailure,
-  // deleteProductStart,
-  // deleteProductSuccess,
-  // updateProductFailure,
-  // updateProductStart,
-  // updateProductSuccess,
-  // addProductFailure,
-  // addProductStart,
-  // addProductSuccess,
-} = orderSlice.actions;
+export const { getOrderFailure, getOrderStart, getOrderSuccess, updateOrderFailure, updateOrderSuccess, updateOrderStart, deleteOrderFailure, deleteOrderStart, deleteOrderSuccess } =
+  orderSlice.actions;
 export default orderSlice.reducer;

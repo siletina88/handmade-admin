@@ -5,6 +5,7 @@ import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import SettingsIcon from "@material-ui/icons/Settings";
 import LanguageIcon from "@material-ui/icons/Language";
 import Badge from "@material-ui/core/Badge";
+import logo from "./logo.png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/apiCalls";
@@ -28,26 +29,32 @@ const Topbar = () => {
     <div className='topbar'>
       <div className='wrapper'>
         <div className='left'>
-          <span className='logo'>Cori admin</span>
+          <div className='logo'>
+            <img className='logoImg' src={logo} alt='' />
+          </div>
         </div>
         <div className='right'>
           <div className='icons'>
-            <div className='icon'>
-              <Badge overlap='circular' badgeContent={4} color='primary'>
-                <NotificationsNoneIcon />
-              </Badge>
+            <div className='leftMenu'>
+              <div className='icon'>
+                <Badge overlap='circular' badgeContent={4} color='primary'>
+                  <NotificationsNoneIcon />
+                </Badge>
+              </div>
+              <div className='icon'>
+                <LanguageIcon />
+              </div>
+              <div className='icon'>
+                <SettingsIcon />
+              </div>
             </div>
-            <div className='icon'>
-              <LanguageIcon />
-            </div>
-            <div className='icon'>
-              <SettingsIcon />
-            </div>
-            <img src='https://www.hollywoodreporter.com/wp-content/uploads/2019/03/avatar-publicity_still-h_2019.jpg?w=681&h=383&crop=1' alt='' className='avatar' />
-            {username ? <div className='icon'>Hello, {username}</div> : <div className='icon'>Hello,Guest</div>}
+            <div className='rightMenu'>
+              {username ? <div className='icon'>Hello, {username}</div> : <div className='icon'>Cao,Guest</div>}
+              <img src={user.img} alt='' className='avatar' />
 
-            <div onClick={handleLogout} className='icon'>
-              LOG OUT
+              <div onClick={handleLogout} className='icon last'>
+                Log Out
+              </div>
             </div>
           </div>
         </div>

@@ -22,22 +22,22 @@ const userSlice = createSlice({
       state.error = true;
     },
 
-    // //delete a product
-    // deleteProductStart: (state) => {
-    //   state.isFetching = true;
-    //   state.error = false;
-    // },
-    // deleteProductSuccess: (state, action) => {
-    //   state.isFetching = false;
-    //   state.products.splice(
-    //     state.products.findIndex((item) => item._id === action.payload),
-    //     1
-    //   );
-    // },
-    // deleteProductFailure: (state) => {
-    //   state.isFetching = false;
-    //   state.error = true;
-    // },
+    //delete a product
+    deleteUserStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    deleteUserSuccess: (state, action) => {
+      state.isFetching = false;
+      state.users.splice(
+        state.users.findIndex((item) => item._id === action.payload),
+        1
+      );
+    },
+    deleteUserFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
 
     //update a product
     updateUserStart: (state) => {
@@ -53,19 +53,19 @@ const userSlice = createSlice({
       state.error = true;
     },
 
-    // //update a product
-    // addProductStart: (state) => {
-    //   state.isFetching = true;
-    //   state.error = false;
-    // },
-    // addProductSuccess: (state, action) => {
-    //   state.isFetching = false;
-    //   state.products.push(action.payload);
-    // },
-    // addProductFailure: (state) => {
-    //   state.isFetching = false;
-    //   state.error = true;
-    // },
+    //update a product
+    addUserStart: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    addUserSuccess: (state, action) => {
+      state.isFetching = false;
+      state.users.push(action.payload);
+    },
+    addUserFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 
@@ -73,14 +73,14 @@ export const {
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
-  // deleteProductFailure,
-  // deleteProductStart,
-  // deleteProductSuccess,
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
   updateUserFailure,
   updateUserStart,
   updateUserSuccess,
-  // addProductFailure,
-  // addProductStart,
-  // addProductSuccess,
+  addUserFailure,
+  addUserStart,
+  addUserSuccess,
 } = userSlice.actions;
 export default userSlice.reducer;

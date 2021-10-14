@@ -1,11 +1,12 @@
-@import '../../styles/partials/breakpoints';
-@import '../../styles/partials/colors';
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/colors";
 
 .sidebar {
   flex: 1;
   height: calc(100vh - 50px);
   background-color: $clr-menu-background;
   position: sticky;
+  padding-top: 50px;
 
   top: 50px;
   .active {

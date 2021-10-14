@@ -5,7 +5,7 @@ import { DeleteOutline, Edit } from "@material-ui/icons";
 import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../redux/apiCalls";
+import { getUsers, deleteUser } from "../../redux/apiCalls";
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const UserList = () => {
   const [data, setData] = useState(userRows);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    deleteUser(id, dispatch);
   };
 
   useEffect(() => {
