@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./newProduct.scss";
 import { useDispatch } from "react-redux";
 import { AddProductWithFirebase } from "../../customActions/AddProductWithFirebase";
+import { AddProductWithCloudinary } from "../../customActions/AddProductWithCloudinary";
 
 const NewProduct = () => {
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({});
-  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const handleChange = (e) => {
@@ -19,7 +20,12 @@ const NewProduct = () => {
   };
   const handleClick = (e) => {
     e.preventDefault();
-    AddProductWithFirebase(dispatch, file, categories, inputs);
+
+    const filesObj = Object.entries(files);
+
+    console.log(filesObj);
+
+    AddProductWithCloudinary(dispatch, filesObj, categories, inputs);
   };
 
   return (
@@ -28,7 +34,7 @@ const NewProduct = () => {
       <form className='form'>
         <div className='item'>
           <label>Slika</label>
-          <input type='file' id='file' onChange={(e) => setFile(e.target.files[0])} />
+          <input type='file' id='files' multiple onChange={(e) => setFiles(e.target.files)} />
         </div>
         <div className='item'>
           <label>Ime</label>

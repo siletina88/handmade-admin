@@ -95,6 +95,16 @@ const User = () => {
                 <label>Telefon</label>
                 <input onChange={handleChange} type='text' name='phone' placeholder={user?.phone} className='updateInput' />
               </div>
+              <div className='updateItem'>
+                <label>Administrator</label>
+                <select onChange={handleChange} name='isAdmin' id='isAdmin'>
+                  <option value='false' defaultValue>
+                    ADMIN?
+                  </option>
+                  <option value='true'>Da</option>
+                  <option value='false'>Ne</option>
+                </select>
+              </div>
             </div>
             <div className='userUpdateRight'>
               <div className='updateUpload'>

@@ -5,7 +5,7 @@ import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import SettingsIcon from "@material-ui/icons/Settings";
 import LanguageIcon from "@material-ui/icons/Language";
 import Badge from "@material-ui/core/Badge";
-import logo from "./logo.png";
+import logo from "./logo6.png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/apiCalls";

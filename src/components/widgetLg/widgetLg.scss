@@ -45,12 +45,12 @@
           border: none;
           border-radius: 10px;
         }
-        .approved {
-          background-color: $clr-button-secondary;
+        .delivering {
+          background-color: $clr-button-danger;
           color: $clr-menu-item-text;
         }
-        .declined {
-          background-color: $clr-button-danger;
+        .delivered {
+          background-color: $clr-button-secondary;
           color: $clr-menu-item-text;
         }
         .pending {

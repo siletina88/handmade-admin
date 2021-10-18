@@ -1,5 +1,5 @@
-@import '../../styles/partials/breakpoints';
-@import '../../styles/partials/colors';
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/colors";
 
 .user {
   flex: 5;
@@ -121,6 +121,7 @@
           .updateUpload {
             display: flex;
             align-items: center;
+            flex-direction: column;
             .uploadBtn {
               cursor: pointer;
               margin-left: 10px;

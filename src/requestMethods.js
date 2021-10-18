@@ -4,9 +4,13 @@ const BASE_URL = "http://localhost:5000/api/";
 
 // const TOKEN = "";
 
+const getStorage = JSON.parse(localStorage.getItem("persist:root"));
+
 const isValidToken = () => {
-  if (JSON.parse(JSON.parse(localStorage.getItem("persist:root")).auth).currentUser) {
-    return true;
+  if (getStorage) {
+    if (getStorage.auth.includes("accessToken")) {
+      return true;
+    }
   }
 };
 

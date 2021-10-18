@@ -94,7 +94,7 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <>
-            <div className='rowitem'>{params.row.status}</div>
+            <div className={"rowStatus " + `${params.row.status}`}>{params.row.status}</div>
           </>
         );
       },

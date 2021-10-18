@@ -33,7 +33,7 @@
     font-weight: bold;
     align-items: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px 10px;
     background-color: $clr-button-secondary;
     cursor: pointer;
@@ -50,7 +50,7 @@
     font-weight: bold;
     align-items: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px 10px;
     background-color: $clr-button-danger;
     cursor: pointer;
@@ -62,4 +62,27 @@
       margin-left: 2px;
     }
   }
+}
+.rowStatus {
+  padding: 2px 7px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+}
+
+.delivering {
+  background-color: $clr-button-danger;
+  color: $clr-menu-item-text;
+}
+.delivered {
+  background-color: $clr-button-secondary;
+  color: $clr-menu-item-text;
+}
+.pending {
+  background-color: $clr-button-primary;
+  color: $clr-menu-item-text;
 }

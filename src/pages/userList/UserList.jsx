@@ -30,7 +30,7 @@ const UserList = () => {
         return (
           <div className='user'>
             <img className='img' src={params.row.img} alt='' />
-            {params.row.username}
+            {params.row.username + " " + (params.row.isAdmin ? "(ADMIN)" : "")}
           </div>
         );
       },
