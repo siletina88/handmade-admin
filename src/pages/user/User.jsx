@@ -24,7 +24,6 @@ const User = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-
     UpdateUserWithFirebase(dispatch, file, id, inputs);
   };
 
@@ -67,7 +66,7 @@ const User = () => {
             </div>
             <div className='userShowInfo'>
               <LocationOn className='showIcon'></LocationOn>
-              <span className='showInfoTitle'>{user.address ? user.address : "ADRESA "}</span>
+              <span className='showInfoTitle'>{user.address}</span>
             </div>
           </div>
         </div>

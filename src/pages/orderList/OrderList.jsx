@@ -31,7 +31,7 @@ const ProductList = () => {
         let title = [];
         params.row.products.map((item) => {
           products.map((product) => {
-            if (product._id === item.productId) {
+            if (product._id === item._id) {
               title.push(product.title);
             }
           });
@@ -44,7 +44,7 @@ const ProductList = () => {
     },
 
     {
-      field: "product",
+      field: "userId",
       headerName: "Korisnik",
       renderCell: (params) => {
         let title = "";
@@ -62,7 +62,7 @@ const ProductList = () => {
     },
 
     {
-      field: "amount",
+      field: "total",
       headerName: "Iznos",
 
       width: 100,

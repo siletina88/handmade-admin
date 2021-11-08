@@ -2,13 +2,11 @@
 @import "../../styles/partials/colors";
 
 .sidebar {
-  flex: 1;
   height: calc(100vh - 50px);
   background-color: $clr-menu-background;
-  position: sticky;
   padding-top: 50px;
-
-  top: 50px;
+  position: sticky;
+  top: 40px;
   .active {
     background-color: $clr-menu-accent;
   }

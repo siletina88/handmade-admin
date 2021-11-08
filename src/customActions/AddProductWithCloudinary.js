@@ -36,8 +36,8 @@ export const AddProductWithCloudinary = (dispatch, filesObj, categories, inputs)
 
       // ... perform after upload is successful operation
       const product = { ...inputs, img: img, imgAlt: urls, categories };
-      const redirect = (window.location = "/products/");
-      addProduct(product, dispatch).then(redirect);
+
+      addProduct(product, dispatch);
     });
   };
   if (filesObj) {
@@ -45,7 +45,7 @@ export const AddProductWithCloudinary = (dispatch, filesObj, categories, inputs)
   } else {
     const image = "https://cdn.imgbin.com/23/21/2/imgbin-product-return-privacy-policy-computer-icons-warehouse-chemist-ADktwPrHSyRDFWxGLCtphbHVH.jpg";
     const product = { ...inputs, img: image, categories };
-    const redirect = (window.location = "/products/");
-    addProduct(product, dispatch).then(redirect);
+
+    addProduct(product, dispatch);
   }
 };

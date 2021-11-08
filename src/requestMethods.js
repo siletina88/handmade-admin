@@ -1,4 +1,5 @@
 import axios from "axios";
+import { store } from "./redux/store";
 
 const BASE_URL = "http://localhost:5000/api/";
 
@@ -22,5 +23,15 @@ export const publicRequest = axios.create({
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,
-  headers: { token: `Bearer ${TOKEN}` },
 });
+
+userRequest.interceptors.request.use(
+  (config) => {
+    const token = store.getState().auth.currentUser.accessToken;
+    config.headers["token"] = `Bearer ${token}`;
+    return config;
+  },
+  (error) => {
+    console.log("Interceptor Request Error" + error);
+  }
+);

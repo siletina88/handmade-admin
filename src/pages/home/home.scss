@@ -1,6 +1,9 @@
 .home {
-  flex: 5;
+  flex: 3;
   padding: 20px;
+  width: calc(100vw - 200px);
+  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   gap: 20px;

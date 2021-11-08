@@ -33,8 +33,19 @@
 
       .infoTop {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         padding-top: 20px;
+
+        .infoTopRight {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+        .infoTopLeft {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
 
         .infoList {
           list-style: none;

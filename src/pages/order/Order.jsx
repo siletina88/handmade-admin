@@ -41,47 +41,65 @@ const Order = () => {
             Narudzba broj - <b>{order._id}</b>{" "}
           </h1>{" "}
           <div className='infoTop'>
-            {users.map(
-              (user) =>
-                user._id === order.userId && (
-                  <div className='infoName'>
-                    Narucilac : <div className='infoDetails'>{user.username}</div>
-                  </div>
-                )
-            )}
-            <div className='infoName'>
-              Artikli :
-              <ul className='infoList'>
-                {order.products.map((item) => {
-                  let quantity = "";
-                  let title = "";
-                  let img = "";
-                  products.map((product) => {
-                    if (product._id === item.productId) {
-                      title = product.title;
-                      quantity = item.quantity;
-                      img = product.img;
-                    }
-                  });
-                  return (
-                    <li className='infoListItem'>
-                      <img src={img} alt='' className='infoImg' />
-                      <span className='infoDetails'>
-                        {quantity} x {title}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
+            <div className='infoTopLeft'>
+              {" "}
+              {users.map(
+                (user) =>
+                  user._id === order.userId && (
+                    <div className='infoName'>
+                      Narucilac : <div className='infoDetails'>{user.username}</div>
+                    </div>
+                  )
+              )}
+              <div className='infoName'>
+                Ime i prezime: <div className='infoDetails'>{order.name}</div>
+              </div>
+              <div className='infoName'>
+                Artikli :
+                <ul className='infoList'>
+                  {order.products.map((item) => {
+                    let quantity = "";
+                    let title = "";
+                    let img = "";
+                    products.map((product) => {
+                      if (product._id === item._id) {
+                        title = product.title;
+                        quantity = item.quantity;
+                        img = product.img;
+                      }
+                    });
+                    return (
+                      <li className='infoListItem'>
+                        <img src={img} alt='' className='infoImg' />
+                        <span className='infoDetails'>
+                          {title} x {quantity}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className='infoName'>
+                Datum narudzbe : <div className='infoDetails'>{format(order.createdAt)}</div>
+              </div>
             </div>
-            <div className='infoName'>
-              Datum narudzbe : <div className='infoDetails'>{format(order.createdAt)}</div>
-            </div>
-            <div className='infoName'>
-              Adresa: <div className='infoDetails'>{order.address}</div>
-            </div>
-            <div className='infoName'>
-              Iznos: <div className='infoDetails'>{order.amount} KM</div>
+            <div className='infoTopRight'>
+              {" "}
+              <div className='infoName'>
+                Adresa: <div className='infoDetails'>{order.address}</div>
+              </div>
+              <div className='infoName'>
+                Grad: <div className='infoDetails'>{order.city}</div>
+              </div>
+              <div className='infoName'>
+                Email: <div className='infoDetails'>{order.email}</div>
+              </div>
+              <div className='infoName'>
+                Telefon: <div className='infoDetails'>{order.phone}</div>
+              </div>
+              <div className='infoName'>
+                Iznos: <div className='infoDetails'>{order.total.toFixed(2)} KM</div>
+              </div>
             </div>
           </div>
         </div>
