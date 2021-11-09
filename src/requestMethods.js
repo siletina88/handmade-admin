@@ -1,21 +1,19 @@
 import axios from "axios";
 import { store } from "./redux/store";
+const { REACT_APP_BASE_URL } = process.env;
 
-const BASE_URL = "http://localhost:5000/api/";
-
-// const TOKEN = "";
-
+const BASE_URL = REACT_APP_BASE_URL;
 const getStorage = JSON.parse(localStorage.getItem("persist:root"));
 
-const isValidToken = () => {
-  if (getStorage) {
-    if (getStorage.auth.includes("accessToken")) {
-      return true;
-    }
-  }
-};
+// const isValidToken = () => {
+//   if (getStorage) {
+//     if (getStorage.auth.includes("accessToken")) {
+//       return true;
+//     }
+//   }
+// };
 
-const TOKEN = isValidToken() ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")).auth).currentUser.accessToken : "";
+// const TOKEN = isValidToken() ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")).auth).currentUser.accessToken : "";
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
