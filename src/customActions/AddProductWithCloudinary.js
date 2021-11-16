@@ -1,7 +1,7 @@
 import { addProduct } from "../redux/apiCalls";
 import axios from "axios";
 
-export const AddProductWithCloudinary = (dispatch, filesObj, categories, inputs) => {
+export const AddProductWithCloudinary = (dispatch, filesObj, categories, inputs, size, color) => {
   console.log(filesObj);
   const handleDrop = () => {
     let urls = [];
@@ -35,7 +35,7 @@ export const AddProductWithCloudinary = (dispatch, filesObj, categories, inputs)
       const img = urls[0];
 
       // ... perform after upload is successful operation
-      const product = { ...inputs, img: img, imgAlt: urls, categories };
+      const product = { ...inputs, img: img, imgAlt: urls, categories, size, color };
 
       addProduct(product, dispatch);
     });
@@ -44,7 +44,7 @@ export const AddProductWithCloudinary = (dispatch, filesObj, categories, inputs)
     handleDrop();
   } else {
     const image = "https://cdn.imgbin.com/23/21/2/imgbin-product-return-privacy-policy-computer-icons-warehouse-chemist-ADktwPrHSyRDFWxGLCtphbHVH.jpg";
-    const product = { ...inputs, img: image, categories };
+    const product = { ...inputs, img: image, categories, size, color };
 
     addProduct(product, dispatch);
   }

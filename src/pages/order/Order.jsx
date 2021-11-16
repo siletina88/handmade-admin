@@ -61,10 +61,14 @@ const Order = () => {
                     let quantity = "";
                     let title = "";
                     let img = "";
+                    let size = "";
+                    let color = "";
                     products.map((product) => {
                       if (product._id === item._id) {
                         title = product.title;
                         quantity = item.quantity;
+                        color = item.color;
+                        size = item.size;
                         img = product.img;
                       }
                     });
@@ -74,6 +78,7 @@ const Order = () => {
                         <span className='infoDetails'>
                           {title} x {quantity}
                         </span>
+                        <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: `${color}` }}></div>
                       </li>
                     );
                   })}
