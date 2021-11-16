@@ -58,11 +58,26 @@
           .infoListItem {
             display: flex;
             align-items: center;
+            border-bottom: 1px solid whitesmoke;
+            width: 50%;
 
             .infoDetails {
               color: $clr-button-primary;
               font-weight: 400;
+
+              .infoDetailItem {
+                display: flex;
+                .color {
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  margin-left: 5px;
+                  text-transform: uppercase;
+                  color: $clr-button-primary;
+                }
+              }
             }
+
             .infoImg {
               width: 40px;
               height: 40px;

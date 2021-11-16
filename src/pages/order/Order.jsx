@@ -75,10 +75,15 @@ const Order = () => {
                     return (
                       <li className='infoListItem'>
                         <img src={img} alt='' className='infoImg' />
-                        <span className='infoDetails'>
+                        <div className='infoDetails'>
                           {title} x {quantity}
-                        </span>
-                        <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: `${color}` }}></div>
+                          <div className='infoDetailItem'>
+                            Boja : <div className='color' style={{ background: `${color}` }}></div>
+                          </div>
+                          <div className='infoDetailItem'>
+                            Velicina : <div className='color'>{size}</div>
+                          </div>
+                        </div>
                       </li>
                     );
                   })}
